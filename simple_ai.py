@@ -126,7 +126,7 @@ class PlayerAi:
                 self.nships[uid] = 0
 
             # Firstly, each base should build a mine if it has less than 3 mines
-            if base.mines < 3:
+            if base.mines < 2:
                 if base.crystal > base.cost("mine"):
                     base.build_mine()
             # If we have enough mines, pick something at random
@@ -135,7 +135,7 @@ class PlayerAi:
                     if base.crystal > base.cost("tank"):
                         tank = base.build_tank(heading=360 * np.random.random())
                         self.ntanks[uid] += 1
-                elif self.nships[uid] < 5:
+                elif self.nships[uid] < 6:
                     if base.crystal > base.cost("ship"):
                         ship = base.build_ship(heading=360 * np.random.random())
                         self.nships[uid] += 1
