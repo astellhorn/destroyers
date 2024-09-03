@@ -140,7 +140,7 @@ class PlayerAi:
                     if base.crystal > base.cost("ship"):
                         ship = base.build_ship(heading=360 * np.random.random())
                         self.nships[uid] += 1
-                elif len(myinfo["bases"]) < 2:
+                elif len(myinfo["bases"]) < 3:
                     if base.crystal > base.cost("ship"):
                         ship = base.build_ship(heading=360 * np.random.random())
                         self.nships[uid] += 1
