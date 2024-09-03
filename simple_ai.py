@@ -119,12 +119,13 @@ class PlayerAi:
 
         # Iterate through all my bases (vehicles belong to bases)
         for base in myinfo["bases"]:
+            print("*******************")
+            print(len(myinfo["bases"]))
             # Bookkeeping
             uid = base.uid
             if uid not in self.ntanks:
                 self.ntanks[uid] = 0
                 self.nships[uid] = 0
-
             # Firstly, each base should build a mine if it has less than 3 mines
             if base.mines < 2:
                 if base.crystal > base.cost("mine"):
@@ -136,6 +137,10 @@ class PlayerAi:
                         tank = base.build_tank(heading=360 * np.random.random())
                         self.ntanks[uid] += 1
                 elif self.nships[uid] < 5:
+                    if base.crystal > base.cost("ship"):
+                        ship = base.build_ship(heading=360 * np.random.random())
+                        self.nships[uid] += 1
+                elif len(myinfo["bases"]) < 2:
                     if base.crystal > base.cost("ship"):
                         ship = base.build_ship(heading=360 * np.random.random())
                         self.nships[uid] += 1
