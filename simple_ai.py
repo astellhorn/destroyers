@@ -135,12 +135,15 @@ class PlayerAi:
                     if base.crystal > base.cost("tank"):
                         tank = base.build_tank(heading=360 * np.random.random())
                         self.ntanks[uid] += 1
-                elif self.nships[uid] < 10:
+                elif self.nships[uid] < 5:
                     if base.crystal > base.cost("ship"):
                         ship = base.build_ship(heading=360 * np.random.random())
                         self.nships[uid] += 1
                 elif base.crystal > base.cost("jet") and self.nships[uid] > 5:
                     jet = base.build_jet(heading=360 * np.random.random())
+                    if base.crystal > base.cost("ship"):
+                        ship = base.build_ship(heading=360 * np.random.random())
+                        self.nships[uid] += 1
 
         # Try to find an enemy target
         target = None
